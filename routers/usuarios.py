@@ -1,5 +1,5 @@
-from models import Usuario,Negocio
-from schemes import UsuarioCreate, UsuarioResponse
+from models import Usuario
+from schemes import UsuarioCreate
 from database import get_db
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends
