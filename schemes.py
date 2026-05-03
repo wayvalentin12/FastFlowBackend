@@ -3,6 +3,7 @@ from time import timezone
 from pydantic import BaseModel
 from datetime import date
 from typing import Optional
+from datetime import datetime 
 
 class UsuarioCreate(BaseModel):
     nombre: str
@@ -10,6 +11,7 @@ class UsuarioCreate(BaseModel):
     password: str
 class RegisterCreate(UsuarioCreate):
     nombre_negocio: str
+    rol: str
 
 class UsuarioResponse(UsuarioCreate):
     nombre: str
@@ -33,5 +35,24 @@ class VentaCreate(BaseModel):
     cantidad: int
     precio: float
     total: float
+    negocio_id: int
 class CategoriaCreate(BaseModel):
     nombre_categoria: str
+
+class VentaTotalDiaResponse(BaseModel):
+    id: int
+    negocio_id: int
+    fecha_apertura: datetime
+    fecha_cierre: Optional[datetime]
+    estado: str
+    resumen: Optional[dict]
+    total_dia: Optional[float]
+
+    class Config:
+        from_attributes = True
+
+class VentaResumenDiaResponse(BaseModel):
+    estado: str
+    resumen: Optional[dict]
+    total_dia: Optional[float]
+
