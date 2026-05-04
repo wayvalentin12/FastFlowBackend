@@ -35,7 +35,6 @@ class VentaCreate(BaseModel):
     cantidad: int
     precio: float
     total: float
-    negocio_id: int
 class CategoriaCreate(BaseModel):
     nombre_categoria: str
 
