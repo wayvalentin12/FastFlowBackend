@@ -14,7 +14,11 @@ app.include_router(productos.router, prefix="/productos", tags=["Productos"])
 app.include_router(caja.router, prefix="/caja", tags=["Caja"])
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://wfastflow.netlify.app/"],
+    allow_origins=[
+        "https://wfastflow.netlify.app",
+        "http://localhost:5173",
+        "http://localhost:3000"
+    ],
     allow_headers=["*"],
     allow_methods=["*"],
     allow_credentials=True,
