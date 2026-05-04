@@ -39,7 +39,7 @@ def verify_refresh_token(token: str,db:Session= Depends(get_db)):
         negocio_id=payload.get("negocio_id")
         if not email or not negocio_id:
             raise HTTPException(status_code=401, detail="El usuario no esta autorizado")
-         db_token = db.query(RefreshToken).filter(
+        db_token = db.query(RefreshToken).filter(
             RefreshToken.token == token,
             RefreshToken.revocado == False
         ).first()
