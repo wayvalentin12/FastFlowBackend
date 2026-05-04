@@ -37,7 +37,7 @@ class Producto(Base):
 class Venta(Base):
     __tablename__="ventas"
     id=Column(Integer,autoincrement=True,primary_key=True)
-    fecha=Column(Date, nullable=False)
+    fecha=Column(DateTime, nullable=False)
     nombre_cliente= Column(String(50),nullable=False)
     producto=Column(String(50),ForeignKey("productos.nombre"),nullable=False)
     cantidad=Column(Integer,nullable=False)

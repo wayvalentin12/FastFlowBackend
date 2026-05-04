@@ -29,7 +29,7 @@ class ProductoUpdate(BaseModel):
     cantidad: int | None = None
     min_cantidad: int | None = None
 class VentaCreate(BaseModel):
-    fecha: date
+    fecha: datetime 
     nombre_cliente: str
     producto: str
     cantidad: int
