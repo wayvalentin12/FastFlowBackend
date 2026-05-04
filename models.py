@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey,Float,Date, JSON, DateTime, Numeric
+from sqlalchemy import Column, String, Integer, ForeignKey,Float,JSON, DateTime, Numeric,Boolean
 from sqlalchemy.sql import func
 from database import Base
 
@@ -55,6 +55,14 @@ class VentaTotalDia(Base):
     estado = Column(String(10), default="abierta")
     resumen = Column(JSON, nullable=True)
     total_dia = Column(Numeric(10,2), nullable=True)
+class RefreshToken(Base):
+    __tablename__ = "refresh_tokens"
+    id = Column(Integer, primary_key=True, index=True)
+    token = Column(String, unique=True, nullable=False)
+    email=Column(String(100),nullable=False)
+    negocio_id = Column(Integer, ForeignKey("negocios.id"), nullable=False)
+    fecha_expiracion=Column(DateTime(timezone=True), nullable=False)
+    revocado=Column(Boolean, default=False)
 
    
 
