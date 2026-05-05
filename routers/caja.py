@@ -120,3 +120,11 @@ async def cerrar_caja(db: Session = Depends(get_db),current_user = Depends(get_c
         "fecha_apertura": caja.fecha_apertura,
         "fecha_cierre": caja.fecha_cierre
     }
+
+@router.get("/historial")
+async def historial_cajas(current_user = Depends(get_current_user),db: Session = Depends(get_db)):
+    cajas = db.query(VentaTotalDia).filter(
+        VentaTotalDia.negocio_id == current_user.negocio_id,
+        VentaTotalDia.estado == "cerrada"
+    ).order_by(VentaTotalDia.fecha_cierre.desc()).all()
+    return cajas
