@@ -27,7 +27,7 @@ class Categoria(Base):
 class Producto(Base):
     __tablename__="productos"
     id=Column(Integer,autoincrement=True,primary_key=True)
-    nombre= Column(String(50), nullable=False, unique=True)
+    nombre= Column(String(50), nullable=False)
     categoria_id= Column(Integer,ForeignKey("categorias.id"),nullable=False )
     precio= Column(Float, nullable=False)
     cantidad= Column(Integer, nullable=False)
@@ -39,7 +39,7 @@ class Venta(Base):
     id=Column(Integer,autoincrement=True,primary_key=True)
     fecha=Column(DateTime, nullable=False)
     nombre_cliente= Column(String(50),nullable=False)
-    producto=Column(String(50),ForeignKey("productos.nombre"),nullable=False)
+    producto=Column(String(50),nullable=False)
     cantidad=Column(Integer,nullable=False)
     precio=Column(Float, nullable=False)
     total=Column(Float,nullable=False)

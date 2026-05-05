@@ -35,7 +35,7 @@ class ProductoUpdate(BaseModel):
 class VentaCreate(BaseModel):
     fecha: datetime 
     nombre_cliente: str
-    producto: str
+    producto_id: int
     cantidad: int
     precio: float
     total: float

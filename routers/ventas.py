@@ -12,7 +12,7 @@ async def all_sales(db: Session = Depends(get_db),current_user = Depends(get_cur
 @router.post("/", status_code=201)
 async def add_sale(venta: VentaCreate,db: Session=Depends(get_db),current_user = Depends(get_current_user)):
 
-    product = db.query(Producto).filter(Producto.nombre == venta.producto,Producto.negocio_id == current_user.negocio_id).first()
+    product = db.query(Producto).filter(Producto.id == venta.producto_id, Producto.negocio_id == current_user.negocio_id).first()
 
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
@@ -24,7 +24,7 @@ async def add_sale(venta: VentaCreate,db: Session=Depends(get_db),current_user =
     new_sale= Venta(
         fecha=venta.fecha,
         nombre_cliente=venta.nombre_cliente
-        ,producto=venta.producto
+        ,producto=product.nombre
         ,cantidad=venta.cantidad
         ,precio=venta.precio
         ,total=venta.total
