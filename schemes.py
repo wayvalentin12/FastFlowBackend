@@ -9,6 +9,10 @@ class UsuarioCreate(BaseModel):
     nombre: str
     email: str
     password: str
+class UsuarioUpdate(BaseModel):
+    nombre: str | None = None
+    email: str | None = None
+    password: str | None = None
 class RegisterCreate(UsuarioCreate):
     nombre_negocio: str
     rol: str

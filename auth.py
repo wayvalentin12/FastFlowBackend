@@ -47,7 +47,7 @@ def verify_refresh_token(token: str,db:Session= Depends(get_db)):
             raise HTTPException(status_code=401, detail="Refresh Token invalido")
         return email,negocio_id
     except JWTError:
-        raise HTTPException(status_code=404, detail="Token invalido")
+        raise HTTPException(status_code=401, detail="Token invalido")
 
 def create_token(data:dict):
     to_encode = data.copy()
@@ -64,7 +64,7 @@ def verify_token(token: str):
         raise HTTPException(status_code=401, detail="El usuario no esta autorizado")
       return email,negocio_id
     except JWTError:
-      raise HTTPException(status_code=404, detail="Token invalido")
+      raise HTTPException(status_code=401, detail="Token invalido")
 def get_current_user(credentials: HTTPAuthorizationCredentials= Depends(security),db:Session= Depends(get_db)):
   email, negocio_id = verify_token(credentials.credentials)
   user = db.query(Usuario).filter(Usuario.email == email, Usuario.negocio_id == negocio_id).first()
