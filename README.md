@@ -25,6 +25,7 @@ Backend del sistema de gestión de inventario y ventas FastFlow, desarrollado co
 - Sistema de apertura y cierre de caja diario
 - Resumen de ventas del día
 - Historial de cajas cerradas
+- Actualización de perfiles de usuario
 
 # Instalación local
 
