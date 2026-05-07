@@ -26,7 +26,7 @@ async def add_sale(venta: VentaCreate,db: Session=Depends(get_db),current_user =
         new_sale = Venta(
             fecha=venta.fecha,
             nombre_cliente=venta.nombre_cliente,
-            producto_id=item.producto_id,
+            producto=product.nombre,
             cantidad=item.cantidad,
             precio=item.precio,
             total=item.total,
