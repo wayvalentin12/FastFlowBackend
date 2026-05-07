@@ -32,13 +32,16 @@ class ProductoUpdate(BaseModel):
     precio: float | None = None
     cantidad: int | None = None
     min_cantidad: int | None = None
-class VentaCreate(BaseModel):
-    fecha: datetime 
-    nombre_cliente: str
+class ItemVenta(BaseModel):
     producto_id: int
     cantidad: int
     precio: float
     total: float
+
+class VentaCreate(BaseModel):
+    fecha: datetime 
+    nombre_cliente: str
+    items: list[ItemVenta]
 class CategoriaCreate(BaseModel):
     nombre_categoria: str
 
